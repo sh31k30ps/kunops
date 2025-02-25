@@ -1,0 +1,14 @@
+kind: Component
+apiVersion: bbr.k8s.io/v1alpha1
+metadata:
+  name: traefik
+helm:
+  repo: traefik
+  repo-url: https://traefik.github.io/charts
+  version: v34.4.0
+  chart: traefik/traefik
+  crd-version: v1.4.0
+  crd-chart: traefik/traefik-crds
+files:
+  keep:
+  - ns.yaml

@@ -1,0 +1,6 @@
+components/**/base/*.yaml
+components/**/base/**/*.yaml
+computed.yaml
+!components/**/base/kustomization.yaml
+!components/**/base/ns.yaml
+certs-secrets.yaml

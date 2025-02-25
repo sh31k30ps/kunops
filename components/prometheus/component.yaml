@@ -1,0 +1,18 @@
+kind: Component
+apiVersion: bbr.k8s.io/v1alpha1
+metadata:
+  name: prometheus
+  namespace: monitoring
+  # disabled: true
+helm:
+  repo: prometheus-community 
+  repo-url: https://prometheus-community.github.io/helm-charts
+  version: v69.4.1
+  chart: prometheus-community/kube-prometheus-stack
+  post-init:
+    resolves:
+    - crds/**/crd-*.yaml
+files:
+  crd: crds/crds
+  keep:
+  - ns.yaml

@@ -1,0 +1,10 @@
+kind: Component
+apiVersion: bbr.k8s.io/v1alpha1
+metadata:
+  name: vault
+  disabled: true
+helm:
+  repo: hashicorp
+  repo-url: https://helm.releases.hashicorp.com
+  version: v0.22.0
+  chart: hashicorp/vault
