@@ -9,6 +9,9 @@ apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
   image: kindest/node:v1.32.2
+  extraMounts:
+  - containerPath: /etc/kubernetes/manifests
+    hostPath: ./overrides/kind/kubernetes/manifests
   kubeadmConfigPatches:
   - |
     kind: InitConfiguration
