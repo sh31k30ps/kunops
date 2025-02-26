@@ -4,6 +4,7 @@
 ARGS?= 
 COMPONENT?=
 ENV?=local
+MODE?=all
 COMPONENTS:=$(shell ls -1 components)
 
 default: help
@@ -31,11 +32,12 @@ components/%/component.yaml: FORCE
 
 PHONY += components-apply
 components-apply: ## Apply components on kube cluster
-	@$(foreach component,$(COMPONENTS),make component-apply COMPONENT=$(component) ENV=$(ENV);)
+	@$(foreach component,$(COMPONENTS),make component-apply COMPONENT=$(component) ENV=$(ENV) MODE=crd;)
+	@$(foreach component,$(COMPONENTS),make component-apply COMPONENT=$(component) ENV=$(ENV) MODE=manifests;)
 
 PHONY += component-apply
 component-apply: ## Apply specific component on kube cluster
-	@./bin/components/apply.sh $(COMPONENT) $(ENV)
+	@./bin/components/apply.sh $(COMPONENT) $(ENV) $(MODE)
 
 PHONY += help
 help: ## Display available commands
