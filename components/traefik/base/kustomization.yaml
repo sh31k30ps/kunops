@@ -7,3 +7,15 @@ resources:
 - ./rbac/clusterrolebinding.yaml
 - ./deployment.yaml
 - ./ingressclass.yaml
+# - ./prometheusrules.yaml 
+- ./service-metrics.yaml
+- ./servicemonitor.yaml
+
+patches:
+- target:
+    kind: ServiceMonitor
+    name: ".*"
+  patch: |-
+    - op: add
+      path: /metadata/labels/release
+      value: prometheus

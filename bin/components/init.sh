@@ -27,6 +27,7 @@ source "${SCRIPT_DIR}/../colors.sh"
 
 if [ "$DISABLED" = "true" ]; then
     warning "Component $NAME is disabled"
+    echo ""
     exit 0
 fi
 
